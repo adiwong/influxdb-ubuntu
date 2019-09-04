@@ -25,5 +25,6 @@ sudo sed -i -e 's/# auth-enabled = false/auth-enabled = true/g' /etc/influxdb/in
 sudo service influxdb restart
 
 #Set InfluxDB Username and Password
+sleep 10
 influxCMD="CREATE USER $influxdbAdmin WITH PASSWORD '$influxdbPassword' WITH ALL PRIVILEGES" 
 influx -execute="$influxCMD"

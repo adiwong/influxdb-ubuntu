@@ -20,10 +20,11 @@ sudo ufw allow 53
 sudo ufw allow 8086
 echo "y" | sudo ufw enable
 
-#Set InfluxDB Username and Password
-influxCMD="q=CREATE USER $influxdbAdmin WITH PASSWORD '$influxdbPassword' WITH ALL PRIVILEGES"
-curl -G 'http://localhost:8086/query' -X POST --data-urlencode "$influxCMD"
-
 # auth-enabled = false
 sudo sed -i -e 's/# auth-enabled = false/auth-enabled = true/g' /etc/influxdb/influxdb.conf
 sudo service influxdb restart
+
+#Set InfluxDB Username and Password
+influxCMD="q=CREATE USER $influxdbAdmin WITH PASSWORD '$influxdbPassword' WITH ALL PRIVILEGES" 
+echo $influxCMD > /home/azureuser/influx-log.txt
+curl -G 'http://localhost:8086/query' -X POST --data-urlencode "$influxCMD"

@@ -27,6 +27,3 @@ curl -G 'http://localhost:8086/query' -X POST --data-urlencode "$influxCMD"
 # auth-enabled = false
 sudo sed -i -e 's/# auth-enabled = false/auth-enabled = true/g' /etc/influxdb/influxdb.conf
 sudo service influxdb restart
-
-CREATE USER admin WITH PASSWORD '<password>' WITH ALL PRIVILEGES
-curl -G 'http://localhost:8086/query' -X POST --data-urlencode "$influxCMD"

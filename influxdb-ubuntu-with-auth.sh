@@ -25,6 +25,5 @@ sudo sed -i -e 's/# auth-enabled = false/auth-enabled = true/g' /etc/influxdb/in
 sudo service influxdb restart
 
 #Set InfluxDB Username and Password
-influxCMD="q=CREATE USER $influxdbAdmin WITH PASSWORD '$influxdbPassword' WITH ALL PRIVILEGES" 
-echo $influxCMD > /home/azureuser/influx-log.txt
-curl -G 'http://localhost:8086/query' -X POST --data-urlencode "$influxCMD"
+influxCMD="CREATE USER $influxdbAdmin WITH PASSWORD '$influxdbPassword' WITH ALL PRIVILEGES" 
+influx -execute="$influxCMD"

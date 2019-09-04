@@ -20,7 +20,7 @@ sudo ufw allow 53
 sudo ufw allow 8086
 echo "y" | sudo ufw enable
 
-# auth-enabled = false
+# Enable authentication auth-enabled = true
 sudo sed -i -e 's/# auth-enabled = false/auth-enabled = true/g' /etc/influxdb/influxdb.conf
 sudo service influxdb restart
 
